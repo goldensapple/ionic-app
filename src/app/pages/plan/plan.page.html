@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border {{ headClass }}">
+  <ion-text><h1 class="p-2">ご利用時間を選択してください</h1></ion-text>
+  <ion-text class="text-l ion-text-wrap p-2">会員カード番目は: {{ cardNumber }}</ion-text>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="pt-5 mb-3">
+      <ion-col size="7" offset="1">
+        <ion-row>
+          <ion-col *ngFor="let plan of planList">
+            <ion-button (click)="toNextPageWithPlan('room', plan)">
+              <div>
+                <!-- <ion-text class="text-l"><fa-icon icon="coins"></fa-icon></ion-text><br> -->
+                <ion-text class="text-l ion-text-wrap">{{ plan.name }}</ion-text>
+              </div>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-button (click)="toBackPage('member')" class="btn-h300 m-2">
+      <div>
+        <ion-text class="text-l ion-text-wrap">戻る</ion-text>
+      </div>
+    </ion-button>
+  </ion-grid>
+  
+</ion-content>

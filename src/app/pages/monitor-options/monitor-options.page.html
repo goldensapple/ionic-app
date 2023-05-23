@@ -1,0 +1,71 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>monitor-options</ion-title>
+  </ion-toolbar>
+</ion-header>
+ -->
+
+
+<!-- <ion-content> -->
+  <ion-header class="ion-no-border">
+    <ion-text><h1 class="p-2">確認（スタッフ側）</h1></ion-text>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label>タバコ</ion-label>
+          <!-- <ion-button size="large" (click)="toWelcomePage()" id="order-button" disabled=true>売上処理</ion-button> -->
+          <ion-text></ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label>クレジット締め（※日計は必ず１日１回）</ion-label>
+          <ion-button size="large" (click)="midReportTest()" class="mr-4">中間計</ion-button>
+          <ion-button size="large" (click)="dailyReportTest()">日計</ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label>設定</ion-label>
+          <ion-button size="large" (click)="toSettingsPrinter()">プリンター設定</ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label>メンテナンス</ion-label>
+          <ion-button size="large" (click)="printRetry()">レシート再印刷</ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="8">
+        <ion-item>
+          <ion-label>店舗設定:</ion-label>
+          <ion-select placeholder="選択して店舗設定更新ボタンを押してください" [(ngModel)]="shopId" required>
+            <ion-select-option *ngFor="let shop of shopsListMaster" value="{{ shop.id }}">{{ shop.name }}</ion-select-option>
+            <!-- <ion-select-option value="02">02</ion-select-option> -->
+          </ion-select>
+          <ion-button (click)="onSetClick('shopId', this.shopId)">店舗設定更新</ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label>トレーニングモード</ion-label>
+          <ion-toggle size="large" id="trainingMode" (ionChange)="modeChange()"></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+<!-- </ion-content> -->

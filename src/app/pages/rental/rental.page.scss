@@ -1,0 +1,79 @@
+.p-2 {
+    margin-left: 5vw;
+    margin-top: 6vh;
+}
+
+ion-button {
+  width: 200px;
+  margin-left: 6vw;
+  font-size: 16px;
+  height: 50px;
+  border-radius: 5px;
+  background: rgb(78, 139, 251);
+
+  &.btn-h300 {
+      margin-top: 5vh;
+  }
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: grey;
+
+    // thead th { position: sticky; top: 0px; }
+    th {
+      background-color: darkgray;
+      border: 1px solid coral;
+      color: white;
+    }
+    td {
+      border: 1px solid #dddddd;
+    }
+    td, th {
+      text-align: left;
+      padding: 8px;
+    }    
+    tr {
+      background-color: white;
+    }
+}
+
+.pagination-table {
+  background-color: white;
+  width: 80vw;
+  // max-height: 75vh;
+  // overflow: auto;
+  margin:auto;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  color: grey;
+}
+
+.pagination {
+  display: flex;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+.table-menu {
+  margin-top: 15px;
+  margin-left: 50px;
+}
+.item-native {
+  background: white;
+  color: #000;
+}
+ion-select {
+  height: 55px;
+}
+
+ion-item {
+  margin-left: 20px;
+}
+
+ion-row {
+  justify-content: center;
+}

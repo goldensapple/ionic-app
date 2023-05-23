@@ -1,0 +1,98 @@
+<ion-header class="ion-no-border {{ headClass }}">
+  <ion-text><h1 class="p-2">貸出・販売商品のバーコードを入力してください</h1></ion-text>
+</ion-header>
+<ion-content class="product-table">
+  <div class="pagination-table">
+    <ion-row >
+      <ion-col>
+        <pagination-controls
+          previousLabel=""
+          nextLabel=""
+          responsive="true"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </ion-col>
+      <ion-col>
+        <ion-item fill="outline">
+          <ion-label>ページごとの項目数: </ion-label>
+          <ion-select interface="popover" [(ngModel)]="tableSize" (ngModelChange)="onTableSizeChange()">
+            <ion-select-option *ngFor="let size of tableSizes" [value]="size">{{size}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col >
+        <ion-item fill="outline">
+          <ion-label position="floating">検索</ion-label>
+          <ion-input placeholder="バーコードまたは名前を入力" (keyup.enter)="fetchProducts()" [(ngModel)]="query" style="width: 300px;"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">番</th>
+            <th scope="col">コード</th>
+            <th scope="col">商品名</th>
+            <th scope="col">選択</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr *ngFor="let product of products | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index"
+          class="trow"
+          [ngStyle]="{'background-color': selectedProductIds.includes(product.id) ? 'lightgreen' : 'white' }"
+          (click)="toChangeCheck($event, product)"
+          >
+            <td scope="row">{{ i + 1 }}</td>
+            <td>
+              {{ product.code }}
+            </td>
+            <td>{{ product.name }}</td>
+            <td>
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              *ngIf="selectedProductIds.includes(product.id)"
+              class="fill-accent h-4 w-4"
+            >
+              <path fill="none" d="M0 0h24v24H0z"></path>
+              <path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+            </svg>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-row>
+    <ion-row><h3>「貸出はn枚までになります」メッセージをポップアップ</h3></ion-row>
+    <ion-row><h3>枚数制限をオーバーした場合</h3></ion-row>
+  </div>
+  <ion-row>
+    <ion-col size="10" offset="1">
+      <ion-button (click)="toBackPage('room')" class="btn-h300 mb-5">
+        <div>
+          <ion-text class="text-l ion-text-wrap">戻る</ion-text>
+        </div>
+      </ion-button>
+      <ion-button (click)="toNextPageWithProducts('confirm')" class="btn-h300 mb-5">
+        <div>
+          <ion-text class="text-l ion-text-wrap">次へ進む</ion-text>
+        </div>
+      </ion-button>
+      <ion-button (click)="toNextPageWithPlan('room', plan.id)" class="btn-h300 mb-5">
+        <div>
+          <ion-text class="text-l ion-text-wrap">キャンセル</ion-text>
+        </div>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

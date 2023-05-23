@@ -1,0 +1,117 @@
+<ion-header class="ion-no-border {{ headClass }}">
+  <ion-text><h1>お部屋を選択してください</h1></ion-text>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="pt-5 mb-3" id="room-type-select">
+      <ion-col size="10" offset="1">
+        <ion-row>
+          <ion-label>
+            <h1>1. おタバコ</h1>
+          </ion-label>
+          <ion-segment (ionChange)="toSetTabacco()" [(ngModel)]="optionTabacco">
+            <ion-segment-button value="2">
+              <ion-label>喫煙</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="1">
+              <ion-label>禁煙</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-row>
+        <ion-row>
+          <ion-label>
+            <h1>2. パソコン</h1>
+          </ion-label>
+          <ion-segment (ionChange)="toSetComputer()" [(ngModel)]="optionComputer">
+            <ion-segment-button value="2">
+              <ion-label>パソコンあり</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="1">
+              <ion-label>どちらでもよい</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </ion-row>
+        <ion-row>
+          <ion-label>
+            <h1>3. 部屋タイプ</h1>
+          </ion-label>
+          <ion-col size="10" offset="1">
+            <ion-row>
+              <ion-col *ngFor="let roomType of roomTypeList">
+                <ion-card (click)="toSetRoomType(roomType.id)" [ngClass]="{'card-checked': roomType.id == optionRoomType}">
+                  <!-- <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" /> -->
+                  <img alt="Silhouette of mountains" src='{{ imageUrl + roomType.image }}' />
+                
+                  <ion-card-content>
+                    <ion-card-title>{{ roomType.name }}</ion-card-title>
+                    {{ roomType.price }} 円
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <!-- <ion-row>
+          <ion-col size="2" *ngFor="let type of typeList">
+            <ion-button (click)="toNextPageWithPlan('room', plan.id)" expand="block" class="btn-h300 m-2">
+              <div>
+                <ion-text class="text-l ion-text-wrap">{{ type.name }}</ion-text>
+                <ion-text class="text-l ion-text-wrap">{{ type.room_price }}</ion-text>
+              </div>
+            </ion-button>
+          </ion-col>
+        </ion-row> -->
+        <ion-row>
+          <ion-label>
+            <h1>4. おまかせ</h1>
+          </ion-label>
+          <ion-button (click)="toNextPageWithPlan('room', plan.id)">
+            <div>
+              <ion-text class="text-l ion-text-wrap">おまかせ</ion-text>
+            </div>
+          </ion-button>
+        </ion-row>
+      </ion-col>
+      <ion-col size="10" offset="1">
+        <ion-button (click)="toBackPage('plan')" class="btn-h300 mb-5">
+          <div>
+            <ion-text class="text-l ion-text-wrap">戻る</ion-text>
+          </div>
+        </ion-button>
+        <ion-button (click)="toChangePart()" class="btn-h300 mb-5">
+          <div>
+            <ion-text class="text-l ion-text-wrap">次へ進む</ion-text>
+          </div>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="pt-5 mb-3 hide" id="room-list">
+      <ion-col size="10" offset="1">
+        <ion-row>
+          <ion-col *ngFor="let room of roomList">
+            <ion-card class="room" (click)="toSelectRoom(room.id)" [ngClass]="{'card-checked': filterRoomIds.indexOf(room.id) > -1, 'check': room.id == selectedRoomId}" [disabled]="filterRoomIds.indexOf(room.id) == -1">            
+              <ion-card-content>
+                <ion-card-title>{{ room.name }}</ion-card-title>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col size="10" offset="1">
+        <ion-button (click)="toChangePart()" class="btn-h300 mb-5">
+          <div>
+            <ion-text class="text-l ion-text-wrap">戻る</ion-text>
+          </div>
+        </ion-button>
+        <ion-button (click)="toNextPageWithRoom('rental')" class="btn-h300 mb-5">
+          <div>
+            <ion-text class="text-l ion-text-wrap">次へ進む</ion-text>
+          </div>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

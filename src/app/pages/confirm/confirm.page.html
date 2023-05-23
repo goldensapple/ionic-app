@@ -1,0 +1,132 @@
+
+<!-- <ion-split-pane contentId="main" class="split-menu">
+  <ion-menu contentId="main" side="end" class="monitor-menu">
+
+    <ion-header class="ion-no-border">
+      <ion-text><h1 class="p-2">確認（スタッフ側）</h1></ion-text>
+    </ion-header>
+    <ion-content>
+      <app-monitor-options></app-monitor-options>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main" class="monitor-menu">
+    
+    <ion-content>
+      <ion-header class="ion-no-border {{ headClass }}">
+        <ion-text><h1 class="p-2">確認</h1></ion-text>
+      </ion-header>      
+      <h1>お支払い金額 {{ chosenRoom.room_price }}</h1>
+      <ion-button (click)="toNextPage('payment-menu')" expand="block" class="btn-h300 m-2">
+        <div>
+          <ion-text class="text-l ion-text-wrap">お会計へ</ion-text>
+        </div>
+      </ion-button>
+
+    </ion-content>
+  </ion-router-outlet>
+</ion-split-pane>
+ -->
+
+<ion-header class="ion-no-border {{ headClass }}">
+  <ion-text><h1 class="p-2">確認</h1></ion-text>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-row>
+          <ion-col size="4">
+            <h3>タバコ</h3>
+          </ion-col>
+          <ion-col size="4">
+            <h3>{{ chosenRoom.smoking_type_id == 1 ? '禁煙' : '喫煙' }}</h3>
+          </ion-col>
+          <ion-button size="2" (click)="toChangePage('room')" >
+            変更
+          </ion-button>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <h3>パソコン</h3>
+          </ion-col>
+          <ion-col size="4">
+            <h3>{{ chosenRoom.pc_type_id == 1 ? 'どちらでもよい' : 'パソコンあり' }}</h3>
+          </ion-col>
+          <ion-button size="2" (click)="toChangePage('room')" >
+            変更
+          </ion-button>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <h3>プラン</h3>
+          </ion-col>
+          <ion-col size="4">
+            <h3>{{ plan.name }}</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <h3>部屋タイプ</h3>
+          </ion-col>
+          <ion-col size="4">
+            <h3>{{ chosenRoom.type_id == 1 ? 'ベッド' : chosenRoom.type_id == 2 ? 'ソファー' : chosenRoom.type_id == 3 ? 'マット' : 'VIP' }}</h3>
+          </ion-col>
+          <ion-button size="2" (click)="toChangePage('room')" >
+            変更
+          </ion-button>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <h3>部屋No.</h3>
+          </ion-col>
+          <ion-col size="4">
+            <h3>{{ chosenRoom.name.substring(0, 3) }}</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <h3>フロア</h3>
+          </ion-col>
+          <ion-col size="4">
+            <h3>{{ chosenRoom.name.substring(0, 1) }} 階</h3>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="5"><h2>お支払い金額   ¥{{ chosenRoom.room_price }}</h2></ion-col>
+          <ion-col size="5"><h2>※スタッフ側で確定後 「お会計へ」をアクディブにする</h2></ion-col>
+           
+        </ion-row>
+      </ion-col>
+      <!-- <ion-col class="monitor-menu1">      
+          <h1>お支払い金額 {{ chosenRoom.room_price }}</h1>
+          <ion-button (click)="toNextPage('payment-menu')" expand="block" class="btn-h300 m-2">
+            <div>
+              <ion-text class="text-l ion-text-wrap">お会計へ</ion-text>
+            </div>
+          </ion-button>
+      </ion-col> -->
+      
+      <!-- <ion-col class="monitor-menu2">
+          <app-monitor-options></app-monitor-options>
+      </ion-col> -->
+    </ion-row>
+    <ion-row>
+      <ion-col size="10" offset="1">
+        <ion-button (click)="toChangePage('payment-menu')" class="btn-h300">
+          <div>
+            <ion-text class="text-l ion-text-wrap">お会計へ</ion-text>
+          </div>
+        </ion-button>
+        <ion-button (click)="toChangePage('plan')" class="btn-h300">
+          <div>
+            <ion-text class="text-l ion-text-wrap">キャンセル</ion-text>
+          </div>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+

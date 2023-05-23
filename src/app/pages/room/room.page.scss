@@ -1,0 +1,61 @@
+ion-segment {
+    width: 320px;
+    margin-left: 6vw;
+    margin-bottom: 3vh;
+    border-radius: 5px;
+    background-color: #bbb;
+} 
+
+ion-segment-button {
+    width: 160px;
+    font-size: 16px;
+    color: white;
+}
+
+ion-card-content, ion-card-title {
+    color: white;
+}
+
+.segment-button-checked { 
+    background-color: rgb(78, 139, 251);
+}
+
+img {
+    margin: 5%;
+    width: 90%;
+}
+
+ion-card {
+    background-color: #bbb;
+    width: 180px;   
+    &.room {
+        width: 80px;
+        &.check {
+            background-color: teal;
+        }
+    }
+    &:hover {
+        background-color: rgb(42, 106, 226);
+    }
+}
+
+ion-text h1 {
+    margin-left: 5vw;
+}
+
+.card-checked { 
+    background-color: rgb(78, 139, 251);
+}
+
+ion-button {
+    width: 200px;
+    margin-left: 6vw;
+    font-size: 16px;
+    height: 50px;
+    border-radius: 5px;
+    background: rgb(78, 139, 251);
+
+    &.btn-h300 {
+        margin-top: 8vh;
+    }
+}

@@ -1,0 +1,26 @@
+
+.welcome {
+    --width: 200px;
+    --height: 200px;
+    --border-radius: 10%;
+    --vertical-align: middle;
+    --padding-start: 100px;
+    --padding-end: 100px;
+    --padding-top: 100px;
+    --padding-bottom: 100px;
+
+}
+
+.p-2 {
+    margin-left: 5vw;
+    margin-top: 6vh;
+}
+
+ion-button, ion-item {
+    margin-left: 6vw;
+    margin-top: 3vh;
+    font-size: 16px;
+    height: 60px;
+    border-radius: 5px;
+    background: rgb(78, 139, 251);
+}
